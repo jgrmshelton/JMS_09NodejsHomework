@@ -3,8 +3,15 @@
 // need Success message after HTML is succesfully created
 // callback to verify there was no error
 // maybe writeFileSync?
-// inquirers .promp() method
+// inquirers .prompt() method
 
 const inquirer = require('inquirer');
 const fs = require ('fs');
 
+const promptInfo = () => {
+    return inquirer.prompt([
+        {
+            
+        }
+    ])    
+}
