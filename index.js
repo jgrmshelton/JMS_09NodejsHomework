@@ -18,7 +18,32 @@ const promptInfo = () => {
         {
             type: 'input',
             name: 'description',
-            message: 'Professional README Guide',  
-        }
+            message: '',  
+        },
+        {
+            type: 'input',
+            name: 'installation',
+            message: '',
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'enter project instructions -- Usage section', 
+        },
+        {
+            type: 'input',
+            name: 'license',
+            message: 'license for project', 
+        },
+        {
+            type: 'input',
+            name: 'contributing',
+            message: 'Other users contributions', 
+        },
+        {
+            type: '',
+            name: 'tests',
+            message: ''
+        },
     ])    
 }
