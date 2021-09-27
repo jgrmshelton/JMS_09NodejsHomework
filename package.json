@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/jgrmshelton/JMS_09NodejsHomework.git"
   },
-  "author": "",
+  "author": "JMS",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jgrmshelton/JMS_09NodejsHomework/issues"
   },
-  "homepage": "https://github.com/jgrmshelton/JMS_09NodejsHomework#readme"
+  "homepage": "https://github.com/jgrmshelton/JMS_09NodejsHomework#readme",
+  "dependencies": {
+    "inquirer": "^8.1.5"
+  }
 }
