@@ -11,7 +11,14 @@ const fs = require ('fs');
 const promptInfo = () => {
     return inquirer.prompt([
         {
-            
+            type: 'input',
+            name: 'projectTitle',
+            message: 'Professional README Guide',  
+        },
+        {
+            type: 'input',
+            name: 'description',
+            message: 'Professional README Guide',  
         }
     ])    
 }
