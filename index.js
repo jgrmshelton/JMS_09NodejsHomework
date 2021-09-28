@@ -18,12 +18,12 @@ const promptInfo = () => {
         {
             type: 'input',
             name: 'description',
-            message: '',  
+            message: 'Description of project.',  
         },
         {
             type: 'input',
             name: 'installation',
-            message: '',
+            message: 'Installation Guidelines',
         },
         {
             type: 'input',
