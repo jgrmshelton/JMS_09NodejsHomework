@@ -8,59 +8,67 @@
 const inquirer = require('inquirer');
 const fs = require ('fs');
 
-inquirer
-    .prompt([
-    {
-        type: 'input',
-        name: 'projectTitle',
-        message: 'Professional README Guide',  
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Description of project.',  
-    },
-    {
-        type: 'input',
-        name: 'installation',
-        message: 'Installation Guidelines',
-    },
-    {
-        type: 'input',
-        name: 'usage',
-        message: 'enter project instructions -- Usage section', 
-    },
-    {
-        type: 'input',
-        name: 'license',
-        message: 'license for project', 
-        choices: ["Attribution-NonCommercial 4.0 International", "Apache 2.0 license", "Boost Software License 1.0", "BSD 3-Clause License", "GNU GPL v3", "ISC License"],
-    },
-    {
-        type: 'input',
-        name: 'contributing',
-        message: 'Other users contributions', 
-    },
-    {
-        type: 'input',
-        name: 'tests',
-        message: 'Test Test Test',
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'Github Username: ',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Email: ',
-    },
-    ])
-    .then((answers) => {
-        const readmePage = generateReadMe(answers);
+// Use writeFileSync method to use promises instead of a callback function
+const writeFileSync = util.promisify(fs.writeFile);
 
-        fs.writeFile('README.md', readmePage, (err) =>
-            err ? console.log (err) : console.log('Success!')
-        );
-    });
+const promptQuestions = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'projectTitle',
+            message: 'Project Title: ',  
+        },
+        {
+            type: 'input',
+            name: 'description',
+            message: 'Describe your project: ',  
+        },
+        {
+            type: 'input',
+            name: 'installation',
+            message: 'Did you make any installations while creating this project?  ',
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'Application Usage: ', 
+        },
+        {
+            type: 'checkbox',
+            name: 'license',
+            message: 'What license did you use for this project?', 
+            choices: ["Attribution-NonCommercial 4.0 International", "Apache 2.0 license", "Boost Software License 1.0", "BSD 3-Clause License", "GNU GPL v3", "ISC License"],
+        },
+        {
+            type: 'input',
+            name: 'contributing',
+            message: 'Are there rules for other contributors?', 
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: 'Testing Instructions: ',
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Github Username: ',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Email: ',
+        },
+    ]);
+};
+
+const init = () => {
+    promptQuestions()
+    // Use writeFileSync method to use promises instead of a callback function
+      .then((answers) => fs.writeFileSync('README.md', generateREADME(answers)))
+      .then(() => console.log('YAY! You have successfully made a README.md.'))
+      .catch((err) => console.error(err));
+};
+
+init();
+  
