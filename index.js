@@ -59,13 +59,19 @@ const promptQuestions = () => {
     ]);
 };
 
-const init = () => {
-    promptQuestions()
-    // Use writeFileSync method to use promises instead of a callback function
-      .then((answers) => fs.writeFileSync('README.md', generateREADME(answers)))
-      .then(() => console.log('YAY! You have successfully made a README.md.'))
-      .catch((err) => console.error(err));
-};
+function init() {
+    inquirer.prompt(promptQuestions).then(function (data) {
+        const fileName = "README.md";
+
+        fs.writeFile(fileName, markdownGenerator(data), (err) => {
+            if (err) {
+                return console.log(err);
+            }
+
+            console.log('YAY! Your README.md was successfully created.');
+        });
+    });
+}
 
 init();
   
