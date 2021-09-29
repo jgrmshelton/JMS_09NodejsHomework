@@ -1,4 +1,4 @@
-// create HTML with user response to promps
+// generate readme
 // write/output HTML file to the app root director (same folder)
 // need Success message after HTML is succesfully created
 // callback to verify there was no error
@@ -7,9 +7,9 @@
 
 const inquirer = require('inquirer');
 const fs = require ('fs');
-const markdownGenerator = require('./assests/markdownGenerator');
 
-const promptInfo = [
+inquirer
+    .prompt([
     {
         type: 'input',
         name: 'projectTitle',
@@ -56,20 +56,11 @@ const promptInfo = [
         name: 'email',
         message: 'Email: ',
     },
-]
-    
-function init() {
-    inquirer.prompt(promptInfo).then(function (data) {
-        const file = "README.md";
+    ])
+    .then((answers) => {
+        const readmePage = generateReadMe(answers);
 
-        fs.writeFile(file, markdownGenerator(data), (err) => {
-            if (err) {
-                return console.log(err);
-            }
-
-            console.log('Success!');
-        });
+        fs.writeFile('README.md', readmePage, (err) =>
+            err ? console.log (err) : console.log('Success!')
+        );
     });
-}
-
-init();
