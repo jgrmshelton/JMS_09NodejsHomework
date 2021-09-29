@@ -8,9 +8,6 @@
 const inquirer = require('inquirer');
 const fs = require ('fs');
 
-// Use writeFileSync method to use promises instead of a callback function
-const writeFileSync = util.promisify(fs.writeFile);
-
 const promptQuestions = () => {
     return inquirer.prompt([
         {
