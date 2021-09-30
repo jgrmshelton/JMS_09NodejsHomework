@@ -69,7 +69,7 @@ inquirer
 
 const content = function (response) {
     const readMe = `
-    #Title: ${response.projectTitle}
+    # Title: ${response.projectTitle}
     ## Table of Contents
     1. [Description](#description)
     </br>
@@ -101,4 +101,6 @@ const content = function (response) {
     # <span id="test"></span>
     # Test Instructions
     ### ${response.test}
-`};
+`;
+return readMe;
+};
