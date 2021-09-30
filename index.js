@@ -60,9 +60,9 @@ const promptQuestions = [
 
 function init() {
     inquirer.prompt(promptQuestions).then(function (data) {
-        const fileName = "README.md";
+        const readme = "README.md";
 
-        fs.writeFile("README.md", readME, (err) => {
+        fs.writeFile("README.md", (data), (err) => {
             if (err) {
                 return console.log(err);
             }
